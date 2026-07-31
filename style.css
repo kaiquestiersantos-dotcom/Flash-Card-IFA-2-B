@@ -1,79 +1,277 @@
+/* =========================================
+   1. VARIÁVEIS GLOBAIS (Foco Total em Baixa Visão)
+   ========================================= */
+:root {
+  --escala-cartao: 1;
+  --tamanho-fonte: 22px; /* Aumentei o tamanho base da fonte para 22px para leitura inicial mais fácil */
+  
+  /* Padrão Ouro WCAG AAA para Baixa Visão */
+  --cor-fundo-tela: #121212;    /* Cinza quase preto. Evita o brilho doloroso do branco puro */
+  --cor-primaria: #FFEA00;      /* Amarelo vibrante. A cor mais visível para o olho humano */
+  --cor-texto-principal: #FFFFFF; /* Branco puro para contrastar com o fundo escuro */
+  --cor-texto-invertido: #000000; /* Preto puro para ser lido em cima do amarelo */
+  
+  --cor-frente-cartao: #1E1E1E; /* Cinza escuro um tom acima do fundo, cria profundidade */
+  --cor-verso-cartao: #2A2A2A;  /* Cinza um pouco mais claro para diferenciar o verso */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   2. CORPO DA PÁGINA
+   ========================================= */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  background-color: var(--cor-fundo-tela);
+  color: var(--cor-texto-principal);
+  
+  font-family: Verdana, "Segoe UI", Arial, sans-serif; 
+  line-height: 1.6; 
+  letter-spacing: 0.05em; /* Espaçamento ligeiramente maior para evitar que as letras se misturem */
+  
+  transition: background-color 0.3s;
+}
+
+/* =========================================
+   3. CABEÇALHO E CONTROLES
+   ========================================= */
 .cabecalho {
-padding: 15px 25px;
+  background-color: var(--cor-primaria);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 4px solid var(--cor-texto-invertido); /* Borda preta forte para separar o cabeçalho */
+}
+
+h1 {
+  color: var(--cor-texto-invertido); /* Título preto no fundo amarelo */
+  font-size: 28px; 
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.opcoes-topo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.controles-tamanho {
+  display: flex;
+  gap: 12px;
+}
+
+/* Botões A+ e A- */
+.controles-tamanho button {
+  background-color: var(--cor-texto-invertido); /* Botão preto */
+  color: var(--cor-primaria); /* Letra amarela */
+  border: 2px solid var(--cor-texto-invertido);
+  border-radius: 50%; 
+  width: 48px; /* Aumentado para 48px, facilitando o clique para quem tem tremores */
+  height: 48px;
+  font-size: 20px;
+  font-weight: 900; /* Letra mais grossa */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controles-tamanho button:hover,
+.controles-tamanho button:focus {
+  background-color: #FFFFFF; /* Fica branco ao focar */
+  color: #000000;
+  outline: 4px solid #FFFFFF; 
+}
+
+.cabecalho-link {
+  color: var(--cor-texto-invertido);
+  text-decoration: underline; 
+  text-underline-offset: 4px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+/* =========================================
+   4. PAINEL DE CORES (Daltonismo)
+   ========================================= */
+.painel-cores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #222222; /* Fundo cinza escuro */
+  border-bottom: 2px solid #555555;
+  flex-wrap: wrap; 
+  font-size: 18px;
+}
+
+.painel-cores span {
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-right: 10px;
+}
+
+.painel-cores button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 3px solid var(--cor-primaria); /* Borda amarela grossa */
+  border-radius: 8px; /* Formato quadrado arredondado para parecer mais com botões físicos */
+  background-color: #000000; 
+  color: var(--cor-primaria);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.painel-cores button:hover,
+.painel-cores button:focus {
+  background-color: var(--cor-primaria); 
+  color: #000000;
+  outline: 3px solid #FFFFFF;
+}
+
+/* =========================================
+   5. FLASHCARDS E EFEITO 3D
+   ========================================= */
+main {
+  flex: 1;
+  padding: 40px 16px;
+  text-align: center;
+}
+
+main h2 {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: var(--cor-primaria); /* Subtítulo em amarelo para guiar a visão */
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 .cartao {
-width: 260px;
-height: 200px;
+  width: 320px; /* Cartões levemente maiores para comportar a nova fonte de 22px */
+  height: 420px;
+  perspective: 1200px;
+  cursor: pointer;
+  transform: scale(var(--escala-cartao));
+  transition: transform 0.3s ease; 
+}
+
+.cartao-interno {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; 
+}
+
+.cartao:hover .cartao-interno,
+.cartao.virado .cartao-interno,
+.cartao:focus .cartao-interno { 
+  transform: rotateY(180deg);
+}
+
+/* Borda de foco super visível para navegação por teclado */
+.cartao:focus {
+  outline: 6px solid var(--cor-primaria);
+  outline-offset: 8px;
+  border-radius: 16px;
+}
+
+.cartao-frente,
+.cartao-verso {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); /* Sombra preta forte */
+  backface-visibility: hidden; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  
+  /* Contorno amarelo brilhante nos cartões para que eles não se percam no fundo escuro */
+  border: 4px solid var(--cor-primaria); 
+}
+
+.cartao-frente {
+  background-color: var(--cor-frente-cartao);
+}
+
+.cartao-verso {
+  transform: rotateY(180deg); 
+  background-color: var(--cor-verso-cartao);
 }
 
 .cartao-imagem {
-width: 100%;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 2px solid #555; 
 }
-.cabecalho { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 15px 25px; 
-} 
-body { 
-  display: flex; 
-  flex-direction: column; 
-  min-height: 100vh; 
-} 
-main { 
-  flex: 1; 
-} 
-.cabecalho { 
-  background-color: #7e3e1c; 
-  padding: 15px 25px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-} 
-.cabecalho-link { 
-  color: #fff; 
-  text-decoration: none; 
-} 
-h1 { 
-  color: #fff; 
-  font-size: 24px; 
-} 
-body { 
-  display: flex; 
-  flex-direction: column; 
-  min-height: 100vh; 
-  background-color: #f5f2f2; 
-} 
-footer { 
-  background-color: #7e3e1c; 
-  padding: 15px 25px; 
-  color: #fff; 
-} 
-.cartao-interno { 
-  position: relative; 
-} 
-.cartao-frente, 
-.cartao-verso { 
-  position: absolute; 
-  border-radius: 12px; 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
-} 
-.cartao-interno { 
-  position: relative; 
-  transition: transform 0.8s; 
-  transform-style: preserve-3d; 
-} 
-.cartao-frente, 
-.cartao-verso { 
-  position: absolute; 
-  border-radius: 12px; 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
-  backface-visibility: hidden; 
-} 
-.cartao-verso { 
-  transform: rotateY(180deg); 
-} 
-.cartao:hover .cartao-interno { 
-  transform: rotateY(180deg); 
-} 
+
+.cartao p, .cartao h3 {
+  margin: 0;
+  font-size: var(--tamanho-fonte);
+  font-weight: 700; 
+}
+
+footer {
+  background-color: var(--cor-primaria);
+  padding: 20px 25px;
+  color: var(--cor-texto-invertido);
+  text-align: center;
+  font-weight: 900;
+  border-top: 4px solid var(--cor-texto-invertido);
+}
+
+/* =========================================
+   6. CLASSES ESPECIAIS DE ACESSIBILIDADE
+   ========================================= */
+
+.texto-leitor-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Ajustes dos filtros. Como a base já é escura, focamos em substituir o amarelo por cores seguras para daltônicos */
+
+body.protanopia, body.deuteranopia {
+  --cor-primaria: #00A6FF; /* Azul ciano brilhante substitui o amarelo */
+}
+
+body.tritanopia {
+  --cor-primaria: #FF3366; /* Rosa/Vermelho brilhante substitui o amarelo */
+}
+
+body.monocromatico {
+  --cor-fundo-tela: #000000;
+  --cor-primaria: #FFFFFF; 
+  --cor-texto-principal: #FFFFFF;
+  --cor-texto-invertido: #000000;
+  --cor-frente-cartao: #000000;
+  --cor-verso-cartao: #222222;
+}
