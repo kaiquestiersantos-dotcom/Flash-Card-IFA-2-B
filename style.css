@@ -1,277 +1,223 @@
-/* =========================================
-   1. VARIÁVEIS GLOBAIS (Foco Total em Baixa Visão)
-   ========================================= */
 :root {
-  --escala-cartao: 1;
-  --tamanho-fonte: 22px; /* Aumentei o tamanho base da fonte para 22px para leitura inicial mais fácil */
-  
-  /* Padrão Ouro WCAG AAA para Baixa Visão */
-  --cor-fundo-tela: #121212;    /* Cinza quase preto. Evita o brilho doloroso do branco puro */
-  --cor-primaria: #FFEA00;      /* Amarelo vibrante. A cor mais visível para o olho humano */
-  --cor-texto-principal: #FFFFFF; /* Branco puro para contrastar com o fundo escuro */
-  --cor-texto-invertido: #000000; /* Preto puro para ser lido em cima do amarelo */
-  
-  --cor-frente-cartao: #1E1E1E; /* Cinza escuro um tom acima do fundo, cria profundidade */
-  --cor-verso-cartao: #2A2A2A;  /* Cinza um pouco mais claro para diferenciar o verso */
+    --bg-color: #f4f7f6; /* Cinza claro azulado padrão */
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --primary: #4a90e2; /* Azul */
+    --accent: #2ecc71; /* Verde */
+    --base-font-size: 16px;
 }
 
-* {
-  box-sizing: border-box;
+/* 🔵 Modo Vermelho/Verde (Protanopia/Deuteranopia) - Cores adaptadas sem tons conflitantes */
+body.daltonism-protan-deuteran {
+    --bg-color: #f6f3eb; /* Creme/Bege bem claro e caloroso */
+    --primary: #0055ff; /* Azul forte e visível */
+    --accent: #e6b800; /* Amarelo escuro substituindo o verde */
 }
 
-/* =========================================
-   2. CORPO DA PÁGINA
-   ========================================= */
+/* 🟡 Modo Azul/Amarelo (Tritanopia) */
+body.daltonism-tritan {
+    --bg-color: #fcf0f2; /* Rosa/Branco extremamente suave */
+    --primary: #ff4757; /* Vermelho/Coral vivo */
+    --accent: #1e90ff; /* Azul brilhante substituindo o amarelo */
+}
+
+/* 🔘 Modo Monocromático (Acromatopsia) */
+body.daltonism-mono {
+    --bg-color: #f0f0f0; /* Cinza claro neutro */
+    --text-color: #111111;
+    --primary: #555555; /* Cinza escuro */
+    --accent: #888888; /* Cinza médio */
+}
+
 body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  
-  background-color: var(--cor-fundo-tela);
-  color: var(--cor-texto-principal);
-  
-  font-family: Verdana, "Segoe UI", Arial, sans-serif; 
-  line-height: 1.6; 
-  letter-spacing: 0.05em; /* Espaçamento ligeiramente maior para evitar que as letras se misturem */
-  
-  transition: background-color 0.3s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--base-font-size);
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor do fundo */
 }
 
-/* =========================================
-   3. CABEÇALHO E CONTROLES
-   ========================================= */
-.cabecalho {
-  background-color: var(--cor-primaria);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  border-bottom: 4px solid var(--cor-texto-invertido); /* Borda preta forte para separar o cabeçalho */
+/* Painel de Acessibilidade */
+.accessibility-panel {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.acc-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.acc-btn {
+    background-color: #e0e6ed;
+    color: #333;
+    border: 1px solid #ccd6e0;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.acc-btn:hover {
+    background-color: #d0d9e3;
+}
+
+.acc-btn.active {
+    background-color: #34495e;
+    color: white;
+    border-color: #34495e;
 }
 
 h1 {
-  color: var(--cor-texto-invertido); /* Título preto no fundo amarelo */
-  font-size: 28px; 
-  margin: 0;
-  letter-spacing: 0.05em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2em;
 }
 
-.opcoes-topo {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.category-select {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid var(--primary);
+    background: white;
+    cursor: pointer;
+    margin-bottom: 30px;
+    outline: none;
 }
 
-.controles-tamanho {
-  display: flex;
-  gap: 12px;
+.container {
+    width: 100%;
+    max-width: 600px;
+    perspective: 1000px;
 }
 
-/* Botões A+ e A- */
-.controles-tamanho button {
-  background-color: var(--cor-texto-invertido); /* Botão preto */
-  color: var(--cor-primaria); /* Letra amarela */
-  border: 2px solid var(--cor-texto-invertido);
-  border-radius: 50%; 
-  width: 48px; /* Aumentado para 48px, facilitando o clique para quem tem tremores */
-  height: 48px;
-  font-size: 20px;
-  font-weight: 900; /* Letra mais grossa */
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Estrutura do Card 3D */
+.flashcard {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
-.controles-tamanho button:hover,
-.controles-tamanho button:focus {
-  background-color: #FFFFFF; /* Fica branco ao focar */
-  color: #000000;
-  outline: 4px solid #FFFFFF; 
+.flashcard.flipped {
+    transform: rotateY(180deg);
 }
 
-.cabecalho-link {
-  color: var(--cor-texto-invertido);
-  text-decoration: underline; 
-  text-underline-offset: 4px;
-  font-weight: 900;
-  font-size: 20px;
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* =========================================
-   4. PAINEL DE CORES (Daltonismo)
-   ========================================= */
-.painel-cores {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background-color: #222222; /* Fundo cinza escuro */
-  border-bottom: 2px solid #555555;
-  flex-wrap: wrap; 
-  font-size: 18px;
+.card-front {
+    background-color: var(--card-bg);
+    border-left: 8px solid var(--primary);
 }
 
-.painel-cores span {
-  font-weight: bold;
-  color: #FFFFFF;
-  margin-right: 10px;
+.card-back {
+    background-color: var(--card-bg);
+    border-left: 8px solid var(--accent);
+    transform: rotateY(180deg);
 }
 
-.painel-cores button {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: 3px solid var(--cor-primaria); /* Borda amarela grossa */
-  border-radius: 8px; /* Formato quadrado arredondado para parecer mais com botões físicos */
-  background-color: #000000; 
-  color: var(--cor-primaria);
-  font-weight: bold;
-  font-size: 16px;
+.tag {
+    position: absolute;
+    top: 15px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7f8c8d;
 }
 
-.painel-cores button:hover,
-.painel-cores button:focus {
-  background-color: var(--cor-primaria); 
-  color: #000000;
-  outline: 3px solid #FFFFFF;
+.question {
+    font-size: 1.35em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
 }
 
-/* =========================================
-   5. FLASHCARDS E EFEITO 3D
-   ========================================= */
-main {
-  flex: 1;
-  padding: 40px 16px;
-  text-align: center;
+.answer {
+    font-size: 1.25em;
+    color: var(--accent); /* Corrigido para acompanhar a paleta dinâmica */
+    line-height: 1.5;
+    margin: 0;
 }
 
-main h2 {
-  margin-top: 0;
-  margin-bottom: 40px;
-  font-weight: 700;
-  color: var(--cor-primaria); /* Subtítulo em amarelo para guiar a visão */
+.hint {
+    position: absolute;
+    bottom: 15px;
+    font-size: 0.75em;
+    color: #95a5a6;
 }
 
-section {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
+/* Controlos de Navegação */
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    align-items: center;
 }
 
-.cartao {
-  width: 320px; /* Cartões levemente maiores para comportar a nova fonte de 22px */
-  height: 420px;
-  perspective: 1200px;
-  cursor: pointer;
-  transform: scale(var(--escala-cartao));
-  transition: transform 0.3s ease; 
+.controls button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: bold;
 }
 
-.cartao-interno {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transition: transform 0.8s;
-  transform-style: preserve-3d; 
+.controls button:hover {
+    filter: brightness(90%);
 }
 
-.cartao:hover .cartao-interno,
-.cartao.virado .cartao-interno,
-.cartao:focus .cartao-interno { 
-  transform: rotateY(180deg);
+.controls button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
 }
 
-/* Borda de foco super visível para navegação por teclado */
-.cartao:focus {
-  outline: 6px solid var(--cor-primaria);
-  outline-offset: 8px;
-  border-radius: 16px;
-}
-
-.cartao-frente,
-.cartao-verso {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); /* Sombra preta forte */
-  backface-visibility: hidden; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  
-  /* Contorno amarelo brilhante nos cartões para que eles não se percam no fundo escuro */
-  border: 4px solid var(--cor-primaria); 
-}
-
-.cartao-frente {
-  background-color: var(--cor-frente-cartao);
-}
-
-.cartao-verso {
-  transform: rotateY(180deg); 
-  background-color: var(--cor-verso-cartao);
-}
-
-.cartao-imagem {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 2px solid #555; 
-}
-
-.cartao p, .cartao h3 {
-  margin: 0;
-  font-size: var(--tamanho-fonte);
-  font-weight: 700; 
-}
-
-footer {
-  background-color: var(--cor-primaria);
-  padding: 20px 25px;
-  color: var(--cor-texto-invertido);
-  text-align: center;
-  font-weight: 900;
-  border-top: 4px solid var(--cor-texto-invertido);
-}
-
-/* =========================================
-   6. CLASSES ESPECIAIS DE ACESSIBILIDADE
-   ========================================= */
-
-.texto-leitor-tela {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* Ajustes dos filtros. Como a base já é escura, focamos em substituir o amarelo por cores seguras para daltônicos */
-
-body.protanopia, body.deuteranopia {
-  --cor-primaria: #00A6FF; /* Azul ciano brilhante substitui o amarelo */
-}
-
-body.tritanopia {
-  --cor-primaria: #FF3366; /* Rosa/Vermelho brilhante substitui o amarelo */
-}
-
-body.monocromatico {
-  --cor-fundo-tela: #000000;
-  --cor-primaria: #FFFFFF; 
-  --cor-texto-principal: #FFFFFF;
-  --cor-texto-invertido: #000000;
-  --cor-frente-cartao: #000000;
-  --cor-verso-cartao: #222222;
+#counter {
+    font-size: 1em;
+    font-weight: bold;
+    color: #7f8c8d;
 }

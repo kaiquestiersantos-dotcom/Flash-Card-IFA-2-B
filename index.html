@@ -1,103 +1,65 @@
-<!DOCTYPE html> 
-<html lang="pt-br"> 
-  <head> 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flashcards de Mitos e Verdades</title>
-    <!-- Conecta o arquivo de estilos (CSS) a esta página -->
-    <link rel="stylesheet" href="style.css" />
-  </head> 
-  <body> 
-    <!-- CABEÇALHO: Contém o título e os controles de tamanho -->
-    <header class="cabecalho"> 
-      <h1>Confere Aí</h1> 
-      
-      <div class="opcoes-topo">
-        <!-- Botões de Acessibilidade de Leitura (Aumentar/Diminuir) -->
-        <div class="controles-tamanho">
-          <button onclick="alterarTamanho(1)" title="Aumentar Tamanho da Letra e do Cartão">A+</button>
-          <button onclick="alterarTamanho(-1)" title="Diminuir Tamanho da Letra e do Cartão">A-</button>
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗂️ Flashcards Temáticos (Acessível)</title>
+    <!-- Link para o seu arquivo de estilo externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Painel de Acessibilidade -->
+    <div class="accessibility-panel">
+        <div class="acc-group">
+            <span>🔤 Tamanho do Texto:</span>
+            <button class="acc-btn" onclick="changeFontSize(1)" title="Aumentar letra">A+</button>
+            <button class="acc-btn" onclick="changeFontSize(-1)" title="Diminuir letra">A-</button>
+            <button class="acc-btn" onclick="resetFontSize()" title="Resetar letra">Reset</button>
         </div>
-
-        <nav> 
-          <a href="#" class="cabecalho-link">Início</a>
-        </nav> 
-      </div>
-    </header> 
-
-    <!-- PAINEL DE CORES: Filtros para daltonismo -->
-    <!-- Os atributos 'role' e 'aria-label' explicam a função desta área para o leitor de tela -->
-    <div class="painel-cores" role="region" aria-label="Controles de contraste e cores">
-      <span>Modo de Cor:</span>
-      <button onclick="mudarTema('padrao')">Padrão</button>
-      <button onclick="mudarTema('protanopia')">Filtro 1 (Sem Vermelho/Verde)</button>
-      <button onclick="mudarTema('tritanopia')">Filtro 2 (Sem Azul/Amarelo)</button>
-      <button onclick="mudarTema('monocromatico')">Preto e Branco</button>
+        <div class="acc-group">
+            <span>👁️ Modo Daltonismo:</span>
+            <button class="acc-btn color-btn active" id="btn-normal" onclick="setDaltonism('normal')">Padrão</button>
+            <button class="acc-btn color-btn" id="btn-protan" onclick="setDaltonism('protan-deuteran')">Vermelho/Verde</button>
+            <button class="acc-btn color-btn" id="btn-tritan" onclick="setDaltonism('tritan')">Azul/Amarelo</button>
+            <button class="acc-btn color-btn" id="btn-mono" onclick="setDaltonism('mono')">Monocromático</button>
+        </div>
     </div>
- 
-    <main> 
-      <h2>Descubra a verdade passando o mouse ou focando com o teclado</h2> 
-      
-      <section>
-        <!-- CARTÃO 1 -->
-        <!-- tabindex="0" permite navegação pelo cartão usando a tecla TAB -->
-        <article class="cartao" tabindex="0" aria-label="Flashcard interativo">
-          <div class="cartao-interno">
-            
-            <!-- Frente do Cartão (Pergunta/Tópico) -->
-            <div class="cartao-frente">
-              <img
-                src="https://i.pinimg.com/474x/01/4a/19/014a19ef42f579091693ba5622530940.jpg"
-                alt="Ilustração de um Unicórnio"
-                class="cartao-imagem"
-              />
-              <!-- Texto invisível na tela, lido em voz alta para organização mental -->
-              <span class="texto-leitor-tela">Frente do cartão. Tópico:</span>
-              <p>Unicórnios.</p>
-            </div>
-            
-            <!-- Verso do Cartão (Resposta) -->
-            <div class="cartao-verso">
-              <span class="texto-leitor-tela">Verso do cartão. Pergunta:</span>
-              <h3>Existe ou não?</h3>
-              <span class="texto-leitor-tela">Resposta:</span>
-              <p>Unicórnios não existem.</p>
-            </div>
 
-          </div>
-        </article>
+    <h1>🗂️ Flashcards Interativos</h1>
 
-        <!-- CARTÃO 2 -->
-        <article class="cartao" tabindex="0" aria-label="Flashcard interativo">
-          <div class="cartao-interno">
-            
-            <div class="cartao-frente">
-              <img
-                src="https://st-patrice-sherrington.com/wp-content/uploads/2024/12/ok-pngtree-3d-santa-delivering-presents-for-christmas-on-transparent-background-png-image-13810755.png"
-                alt="Ilustração do Papai Noel em 3D"
-                class="cartao-imagem"
-              />
-              <span class="texto-leitor-tela">Frente do cartão. Tópico:</span>
-              <p>Papai Noel.</p>
-            </div>
-            
-            <div class="cartao-verso">
-              <span class="texto-leitor-tela">Verso do cartão. Pergunta:</span>
-              <h3>Existe ou não?</h3>
-              <span class="texto-leitor-tela">Resposta:</span>
-              <p>O Papai Noel é uma figura lendária.</p>
-            </div>
+    <!-- Filtro de Categorias -->
+    <select id="categoryFilter" class="category-select" onchange="changeCategory()">
+        <option value="all">Todas as Categorias</option>
+        <option value="newton">Disco de Newton</option>
+        <option value="vision">Anomalias da Visão</option>
+        <option value="world">Curiosidades do Mundo</option>
+    </select>
 
-          </div>
-        </article>
-      </section>  
-    </main> 
-    
-    <footer> 
-      <p>Projeto feito por Professora Rhaissa</p> 
-    </footer> 
-    
-    <!-- Conecta o arquivo de interações (JavaScript) ao final do documento -->
+    <!-- Contentor do Card -->
+    <div class="container">
+        <div class="flashcard" id="card" onclick="flipCard()">
+            <div class="card-face card-front">
+                <span class="tag" id="cardTag">Categoria</span>
+                <p class="question" id="cardQuestion">Pergunta</p>
+                <span class="hint">💡 Clique para ver a resposta</span>
+            </div>
+            <div class="card-face card-back">
+                <span class="tag">Resposta</span>
+                <p class="answer" id="cardAnswer">Resposta</p>
+                <span class="hint">🔄 Clique para voltar à pergunta</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botões de Controlo -->
+    <div class="controls">
+        <button id="prevBtn" onclick="prevCard()">Anterior</button>
+        <span id="counter">1 / 12</span>
+        <button id="nextBtn" onclick="nextCard()">Próximo</button>
+    </div>
+
+    <!-- Link para o seu arquivo de lógica Javascript externo -->
     <script src="main.js"></script>
-  </body> 
+</body>
 </html>
