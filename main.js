@@ -3,7 +3,7 @@ const allCards = [
     // Disco de Newton
     { category: "newton", label: "🌈 Disco de Newton", q: "O que acontece quando o Disco de Newton gira rapidamente?", a: "As cores do espectro visível misturam-se e o disco parece ficar branco (ou cinzento-claro)." },
     { category: "newton", label: "🌈 Disco de Newton", q: "Qual é o principal objetivo do Disco de Newton?", a: "Demonstrar a síntese das cores, provando que a luz branca é a combinação de todas as cores do arco-íris." },
-    { category: "newton", label: "🌈 Disco de Newton", q: "Quem inventou o Disco de Newton e em que século?", a: "Foi inventado pelo físico Sir Isaac Newton no século XVII." },
+    { category: "newton", label: "🌈 Disco de Newton", q: " Qual instrumento Newton usou para separar a luz branca?", a: "Um prisma, que separava a luz branca em diferentes cores." },
     { category: "newton", label: "🌈 Disco de Newton", q: "Quais são as sete cores principais presentes no disco?", a: "Vermelho, laranja, amarelo, verde, azul, anil (índigo) e violeta." },
     { category: "newton", label: "🌈 Disco de Newton", q: "Que fenómeno ótico explica por que o nosso cérebro funde as cores em movimento?", a: "A persistência retiniana (ou persistência da visão), onde a imagem permanece na retina por uma fração de segundo." },
     
@@ -17,6 +17,9 @@ const allCards = [
     // Curiosidades do Mundo
     { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o lugar mais seco da Terra onde quase nunca chove?", a: "O Deserto do Atacama, no Chile. Algumas zonas não registam chuva significativa há séculos." },
     { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é a única estrutura viva na Terra que pode ser vista do espaço?", a: "A Grande Barreira de Corais na Austrália." }
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o time com maior torcida no Brasil?", a: "A maior torcida de futebol no Brasil é o flamengo. " }
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quando o cartão amarelo e o vermelho foram implementados no futebol?", a:"O cartão vermelho e o amarelo só começaram a ser usados na Copa do Mundo de 1970, no México. A ideia foi criada para deixar as decisões dos árbitros mais fáceis de entender, especialmente para jogadores que falavam idiomas diferentes."}
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quanto uma pessoa pesaria na Lua em comparação com a Terra?", a:"Aproximadamente 1/6 do seu peso na Terra, porque a gravidade da Lua é cerca de 6 vezes menor que a da Terra."}
 ];
 
 let filteredCards = [...allCards];
