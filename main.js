@@ -16,9 +16,9 @@ const allCards = [
 
     // Curiosidades do Mundo
     { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o lugar mais seco da Terra onde quase nunca chove?", a: "O Deserto do Atacama, no Chile. Algumas zonas não registam chuva significativa há séculos." },
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é a única estrutura viva na Terra que pode ser vista do espaço?", a: "A Grande Barreira de Corais na Austrália." }
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o time com maior torcida no Brasil?", a: "A maior torcida de futebol no Brasil é o flamengo. " }
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quando o cartão amarelo e o vermelho foram implementados no futebol?", a:"O cartão vermelho e o amarelo só começaram a ser usados na Copa do Mundo de 1970, no México. A ideia foi criada para deixar as decisões dos árbitros mais fáceis de entender, especialmente para jogadores que falavam idiomas diferentes."}
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é a única estrutura viva na Terra que pode ser vista do espaço?", a: "A Grande Barreira de Corais na Austrália." },
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o time com maior torcida no Brasil?", a: "A maior torcida de futebol no Brasil é o flamengo. " },
+    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quando o cartão amarelo e o vermelho foram implementados no futebol?", a:"O cartão vermelho e o amarelo só começaram a ser usados na Copa do Mundo de 1970, no México. A ideia foi criada para deixar as decisões dos árbitros mais fáceis de entender, especialmente para jogadores que falavam idiomas diferentes."},
     { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quanto uma pessoa pesaria na Lua em comparação com a Terra?", a:"Aproximadamente 1/6 do seu peso na Terra, porque a gravidade da Lua é cerca de 6 vezes menor que a da Terra."}
 ];
 
