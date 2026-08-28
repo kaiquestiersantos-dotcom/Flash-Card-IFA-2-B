@@ -175,6 +175,7 @@ h1 {
 
 .answer {
     font-size: 1.25em;
+    font-weight: bold;
     color: var(--accent); /* Corrigido para acompanhar a paleta dinâmica */
     line-height: 1.5;
     margin: 0;
