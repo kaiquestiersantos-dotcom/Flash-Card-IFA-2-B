@@ -1,25 +1,25 @@
 // Dados dos 12 Flashcards Completos
 const allCards = [
     // Disco de Newton
-    { category: "newton", label: "🌈 Disco de Newton", q: "O que acontece quando o Disco de Newton gira rapidamente?", a: "As cores do espectro visível misturam-se e o disco parece ficar branco (ou cinzento-claro)." },
-    { category: "newton", label: "🌈 Disco de Newton", q: "Qual é o principal objetivo do Disco de Newton?", a: "Demonstrar a síntese das cores, provando que a luz branca é a combinação de todas as cores do arco-íris." },
-    { category: "newton", label: "🌈 Disco de Newton", q: " Qual instrumento Newton usou para separar a luz branca?", a: "Um prisma, que separava a luz branca em diferentes cores." },
-    { category: "newton", label: "🌈 Disco de Newton", q: "Quais são as sete cores principais presentes no disco?", a: "Vermelho, laranja, amarelo, verde, azul, anil (índigo) e violeta." },
-    { category: "newton", label: "🌈 Disco de Newton", q: "Que fenómeno ótico explica por que o nosso cérebro funde as cores em movimento?", a: "A persistência retiniana (ou persistência da visão), onde a imagem permanece na retina por uma fração de segundo." },
+    { category: "newton", label: "🌈 Róbotica", q: "O que acontece quando o Disco de Newton gira rapidamente?", a: "As cores do espectro visível misturam-se e o disco parece ficar branco (ou cinzento-claro)." },
+    { category: "newton", label: "🌈 Róbotica", q: "Qual é o principal objetivo do Disco de Newton?", a: "Demonstrar a síntese das cores, provando que a luz branca é a combinação de todas as cores do arco-íris." },
+    { category: "newton", label: "🌈 Róbotica", q: " Qual instrumento Newton usou para separar a luz branca?", a: "Um prisma, que separava a luz branca em diferentes cores." },
+    { category: "newton", label: "🌈 Róbotica", q: "Quais são as sete cores principais presentes no disco?", a: "Vermelho, laranja, amarelo, verde, azul, anil (índigo) e violeta." },
+    { category: "newton", label: "🌈 Róbotica", q: "Que fenómeno ótico explica por que o nosso cérebro funde as cores em movimento?", a: "A persistência retiniana (ou persistência da visão), onde a imagem permanece na retina por uma fração de segundo." },
     
     // Anomalias da Visão
-    { category: "vision", label: "👁️ Anomalias da Visão", q: "O que é a Miopia e como afeta a visão?", a: "É a dificuldade em ver objetos distantes com clareza, porque a imagem foca antes da retina. Corrige-se com lentes divergentes." },
-    { category: "vision", label: "👁️ Anomalias da Visão", q: "Qual é a diferença principal da Hipermetropia em relação à Miopia?", a: "Na hipermetropia, a dificuldade é focar objetos próximos, pois a imagem forma-se atrás da retina. Corrige-se com lentes convergentes." },
-    { category: "vision", label: "👁️ Anomalias da Visão", q: "O que caracteriza o Astigmatismo?", a: "Uma curvatura irregular da córnea ou do cristalino, causando uma visão desfocada tanto de perto como de longe. Corrige-se com lentes cilíndricas." },
-    { category: "vision", label: "👁️ Anomalias da Visão", q: "O que é a Presbiopia e quando costuma surgir?", a: "Conhecida como 'vista cansada', é a perda de elasticidade do cristalino que dificulta focar de perto. Surge geralmente após os 40 anos." },
-    { category: "vision", label: "👁️ Anomalias da Visão", q: "Como o Daltonismo afeta a perceção visual?", a: "É uma perturbação genética que causa a incapacidade de distinguir certas cores, sendo a confusão entre o verde e o vermelho a mais comum." },
+    { category: "vision", label: "👁️ Tecnociência", q: "O que é a Miopia e como afeta a visão?", a: "É a dificuldade em ver objetos distantes com clareza, porque a imagem foca antes da retina. Corrige-se com lentes divergentes." },
+    { category: "vision", label: "👁️ Tecnociência", q: "Qual é a diferença principal da Hipermetropia em relação à Miopia?", a: "Na hipermetropia, a dificuldade é focar objetos próximos, pois a imagem forma-se atrás da retina. Corrige-se com lentes convergentes." },
+    { category: "vision", label: "👁️ Tecnociência", q: "O que caracteriza o Astigmatismo?", a: "Uma curvatura irregular da córnea ou do cristalino, causando uma visão desfocada tanto de perto como de longe. Corrige-se com lentes cilíndricas." },
+    { category: "vision", label: "👁️ Tecnociência", q: "O que é a Presbiopia e quando costuma surgir?", a: "Conhecida como 'vista cansada', é a perda de elasticidade do cristalino que dificulta focar de perto. Surge geralmente após os 40 anos." },
+    { category: "vision", label: "👁️ Tecnociência", q: "Como o Daltonismo afeta a perceção visual?", a: "É uma perturbação genética que causa a incapacidade de distinguir certas cores, sendo a confusão entre o verde e o vermelho a mais comum." },
 
     // Curiosidades do Mundo
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o lugar mais seco da Terra onde quase nunca chove?", a: "O Deserto do Atacama, no Chile. Algumas zonas não registam chuva significativa há séculos." },
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é a única estrutura viva na Terra que pode ser vista do espaço?", a: "A Grande Barreira de Corais na Austrália." },
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Qual é o time com maior torcida no Brasil?", a: "A maior torcida de futebol no Brasil é o flamengo. " },
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quando o cartão amarelo e o vermelho foram implementados no futebol?", a:"O cartão vermelho e o amarelo só começaram a ser usados na Copa do Mundo de 1970, no México. A ideia foi criada para deixar as decisões dos árbitros mais fáceis de entender, especialmente para jogadores que falavam idiomas diferentes."},
-    { category: "world", label: "🌍 Curiosidades do Mundo", q: "Quanto uma pessoa pesaria na Lua em comparação com a Terra?", a:"Aproximadamente 1/6 do seu peso na Terra, porque a gravidade da Lua é cerca de 6 vezes menor que a da Terra."}
+    { category: "world", label: "🌍 Programação", q: "Qual é o lugar mais seco da Terra onde quase nunca chove?", a: "O Deserto do Atacama, no Chile. Algumas zonas não registam chuva significativa há séculos." },
+    { category: "world", label: "🌍 Programação", q: "Qual é a única estrutura viva na Terra que pode ser vista do espaço?", a: "A Grande Barreira de Corais na Austrália." },
+    { category: "world", label: "🌍 Programação", q: "Qual é o time com maior torcida no Brasil?", a: "A maior torcida de futebol no Brasil é o flamengo. " },
+    { category: "world", label: "🌍 Programação", q: "Quando o cartão amarelo e o vermelho foram implementados no futebol?", a:"O cartão vermelho e o amarelo só começaram a ser usados na Copa do Mundo de 1970, no México. A ideia foi criada para deixar as decisões dos árbitros mais fáceis de entender, especialmente para jogadores que falavam idiomas diferentes."},
+    { category: "world", label: "🌍 Programação", q: "Quanto uma pessoa pesaria na Lua em comparação com a Terra?", a:"Aproximadamente 1/6 do seu peso na Terra, porque a gravidade da Lua é cerca de 6 vezes menor que a da Terra."}
 ];
 
 let filteredCards = [...allCards];
@@ -85,7 +85,7 @@ function changeFontSize(action) {
 
 function resetFontSize() {
     currentFontSize = 16;
-    document.body.style.setProperty('--base-font-size', '16px');
+    document.body.style.setProperty('--base-font-size', '20px');
 }
 
 function setDaltonism(type) {
